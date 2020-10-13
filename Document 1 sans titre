@@ -1,0 +1,55 @@
+Consignes + quelques lignes de codes por JBDC
+Radoine BOUGHLEM 
+
+08:27
+
+public void ajouterAuteur(Integer idAuteur, String nom, String prenom, String email, String specialite) 
+
+08:29
+
+public void supprimerAuteur(Integer idAuteur) 
+
+08:31
+
+int nb = stmt.executeUpdate(requete); System.out.println(nb + " ligne(s) insérée(s)"); 
+
+
+
+
+
+
+•Exécution d'une instruction simple de type UPDATE:Ajouter une catégorie « céréales » de code 5 dans la table catégories
+Statement req; 
+int nb;
+ 
+req = con.createStatement();
+
+nb = req.executeUpdate(''insert into categories values (5, 'cereales')'');
+System.out.println('' nombre de lignes modifiées : ''+nb);
+
+req.close();
+
+
+
+
+
+•Instruction paramétrée de type UPDATE:Ajout de 2 nouvelles catégories dans la table catégorie
+
+PreparedStatement req; 
+int nb; 
+
+req = con.prepareStatement(''insert into categories values (?,?)'');
+
+req.setInt(1, 12);
+	req.setString(2, ''fruits'');
+	nb = req.executeUpdate();
+	
+req.setInt(1, 13);
+	req.setString(2, ''légumes'');
+	nb = req.executeUpdate();
+	req.close()
+
+
+
+
+
